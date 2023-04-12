@@ -10,6 +10,8 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
+#[InheritanceType("SINGLE_TABLE")]
+#[DiscriminatorMap(['client' => Client::class, 'coach' => Coach::class, 'debutant' => Debutant::class])]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class Client implements UserInterface, PasswordAuthenticatedUserInterface
 {
