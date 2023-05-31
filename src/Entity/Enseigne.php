@@ -26,6 +26,10 @@ class Enseigne
         $this->sallesDeSport = new ArrayCollection();
     }
 
+    public function __ToString(){
+        return $this->libelle;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

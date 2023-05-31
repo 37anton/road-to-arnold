@@ -26,6 +26,10 @@ class Ville
         $this->sallesDeSport = new ArrayCollection();
     }
 
+    public function __ToString(){
+        return $this->nom;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
