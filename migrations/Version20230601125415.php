@@ -31,6 +31,17 @@ final class Version20230601125415 extends AbstractMigration
         $this->addSql('ALTER TABLE debutant ADD CONSTRAINT FK_9D5DB654BF396750 FOREIGN KEY (id) REFERENCES client (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE salle_de_sport ADD CONSTRAINT FK_D533E789A73F0036 FOREIGN KEY (ville_id) REFERENCES ville (id)');
         $this->addSql('ALTER TABLE salle_de_sport ADD CONSTRAINT FK_D533E7896C2A0A71 FOREIGN KEY (enseigne_id) REFERENCES enseigne (id)');
+        $this->addSql('CREATE TABLE rendez_vous (id INT AUTO_INCREMENT NOT NULL, salle_id INT NOT NULL, heure TIME NOT NULL, date DATE NOT NULL, INDEX IDX_65E8AA0ADC304035 (salle_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE rendez_vous ADD CONSTRAINT FK_65E8AA0ADC304035 FOREIGN KEY (salle_id) REFERENCES salle_de_sport (id)');
+        $this->addSql('ALTER TABLE rendez_vous ADD coach_id INT DEFAULT NULL, ADD debutant_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE rendez_vous ADD CONSTRAINT FK_65E8AA0A3C105691 FOREIGN KEY (coach_id) REFERENCES coach (id)');
+        $this->addSql('ALTER TABLE rendez_vous ADD CONSTRAINT FK_65E8AA0AAAB167B6 FOREIGN KEY (debutant_id) REFERENCES debutant (id)');
+        $this->addSql('CREATE INDEX IDX_65E8AA0A3C105691 ON rendez_vous (coach_id)');
+        $this->addSql('CREATE INDEX IDX_65E8AA0AAAB167B6 ON rendez_vous (debutant_id)');
+        $this->addSql('ALTER TABLE rendez_vous DROP heure, DROP date');
+        $this->addSql('ALTER TABLE salle_de_sport ADD adresse VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE rendez_vous ADD date_heure DATETIME NOT NULL');
+        $this->addSql('ALTER TABLE rendez_vous ADD message LONGTEXT NOT NULL');
     }
 
     public function down(Schema $schema): void
@@ -47,5 +58,16 @@ final class Version20230601125415 extends AbstractMigration
         $this->addSql('DROP TABLE salle_de_sport');
         $this->addSql('DROP TABLE ville');
         $this->addSql('DROP TABLE messenger_messages');
+        $this->addSql('ALTER TABLE rendez_vous DROP FOREIGN KEY FK_65E8AA0ADC304035');
+        $this->addSql('DROP TABLE rendez_vous');
+        $this->addSql('ALTER TABLE rendez_vous DROP FOREIGN KEY FK_65E8AA0A3C105691');
+        $this->addSql('ALTER TABLE rendez_vous DROP FOREIGN KEY FK_65E8AA0AAAB167B6');
+        $this->addSql('DROP INDEX IDX_65E8AA0A3C105691 ON rendez_vous');
+        $this->addSql('DROP INDEX IDX_65E8AA0AAAB167B6 ON rendez_vous');
+        $this->addSql('ALTER TABLE rendez_vous DROP coach_id, DROP debutant_id');
+        $this->addSql('ALTER TABLE rendez_vous ADD heure TIME NOT NULL, ADD date DATE NOT NULL');
+        $this->addSql('ALTER TABLE salle_de_sport DROP adresse');
+        $this->addSql('ALTER TABLE rendez_vous DROP date_heure');
+        $this->addSql('ALTER TABLE rendez_vous DROP message');
     }
 }
