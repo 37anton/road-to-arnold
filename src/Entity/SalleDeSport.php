@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SalleDeSportRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,8 +34,18 @@ class SalleDeSport
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+
     #[ORM\Column(length: 255)]
     private ?string $adresse = null;
+
+    #[ORM\OneToMany(mappedBy: 'salle', targetEntity: RendezVous::class)]
+    private Collection $rendezVouses;
+
+    public function __construct()
+    {
+        $this->rendezVouses = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -112,6 +124,7 @@ class SalleDeSport
         return $this;
     }
 
+
     public function getAdresse(): ?string
     {
         return $this->adresse;
@@ -120,6 +133,34 @@ class SalleDeSport
     public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
+    }
+    /**
+     * @return Collection<int, RendezVous>
+     */
+    public function getRendezVouses(): Collection
+    {
+        return $this->rendezVouses;
+    }
+
+    public function addRendezVouse(RendezVous $rendezVouse): self
+    {
+        if (!$this->rendezVouses->contains($rendezVouse)) {
+            $this->rendezVouses->add($rendezVouse);
+            $rendezVouse->setSalle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRendezVouse(RendezVous $rendezVouse): self
+    {
+        if ($this->rendezVouses->removeElement($rendezVouse)) {
+            // set the owning side to null (unless already changed)
+            if ($rendezVouse->getSalle() === $this) {
+                $rendezVouse->setSalle(null);
+            }
+        }
+
 
         return $this;
     }
