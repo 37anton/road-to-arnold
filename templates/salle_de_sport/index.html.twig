@@ -10,7 +10,7 @@
             {% for salledesport in salledesports %}
                 <div class="col-md-4">
                     <div class="salledesport-item text-center">
-                        <a href="{{ path('app_salledesport', {'slug' : salledesport.slug} ) }}"><img src="/uploads/{{ salledesport.illustration }}" alt="" class="img-fluid"></a>
+                        <a href="{{ path('app_salle_de_sport_unit', {'slug' : salledesport.slug} ) }}"><img src="/uploads/{{ salledesport.illustration }}" alt="" class="img-fluid"></a>
                         <h5>{{ salledesport.libelle }}</h5>
                     </div>
                 </div>
