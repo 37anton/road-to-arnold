@@ -2,15 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\ClientRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ClientRepository;
+use Doctrine\ORM\Mapping\InheritanceType;
+use Doctrine\ORM\Mapping\DiscriminatorMap;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
-#[InheritanceType("SINGLE_TABLE")]
+#[InheritanceType("JOINED")]
 #[DiscriminatorMap(['client' => Client::class, 'coach' => Coach::class, 'debutant' => Debutant::class])]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class Client implements UserInterface, PasswordAuthenticatedUserInterface
@@ -52,9 +54,6 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $genre = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $bio = null;
 
     public function getId(): ?int
     {
@@ -123,7 +122,7 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        // $this->password = null;
     }
 
     public function getPrenom(): ?string
@@ -210,17 +209,7 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getBio(): ?string
-    {
-        return $this->bio;
-    }
 
-    public function setBio(string $bio): self
-    {
-        $this->bio = $bio;
-
-        return $this;
-    }
     public function __toString(): string
     {
         return (string) $this->getEmail();

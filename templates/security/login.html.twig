@@ -1,75 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Se connecter - RoadToArnold{% endblock %}
+{% block title %}Login
+{% endblock %}
 
 {% block body %}
-<section class="vh-100">
-  <div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          class="img-fluid" alt="Sample image">
-      </div>
+	<div class="container-xl">
+		<h1>Login</h1>
 
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
 
+		<form method="post">
 
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-
-        {% if app.user %}
-            <div class="mb-3">
-                Tu es connecter en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-            </div>
-        {% endif %}
-
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="email" value="{{ last_username }}"name="email" id="inputEmail" autocomplete="email" required autofocus class="form-control form-control-lg"
-              placeholder="Entrez une adresse valide" />
-            <label class="form-label" for="inputEmail">Adresse Email</label>
-          </div>
-
-          <!-- Password input -->
-          <div class="form-outline mb-3">
-            <input type="password" name="password" id="inputPassword" autocomplete="current-password" required class="form-control form-control-lg"
-              placeholder="Entrez un mot de passe" />
-            <label class="form-label" for="inputEmail">Mot de passe</label>
-          </div>
-
-          <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-          <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
-            <a href="#!" class="text-body">Forgot password?</a>
-          </div>
-
-          <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="submit" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Se connecter</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Pas de compte? <a href="{{ path('app_register') }}"
-                class="link-danger">S'inscrire</a></p>
-          </div>
-
-        </form>
-      </div>
-    </div>
-  </div>
-  
-</section>
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-{% endblock %}
+			{{form_start(formView)}}
+			{{form_label(formView.email)}}
+			{{form_widget(formView.email)}}
+			{{form_label(formView.password)}}
+			{{form_widget(formView.password)}}
+			<button type="submit" class="btn btn-primary">
+				Se connecter</button>
+			{{form_end(formView)}}</div>
+	</div>
+</form>{% endblock %}

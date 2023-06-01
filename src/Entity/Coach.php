@@ -13,8 +13,24 @@ class Coach extends Client
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column]
+    private ?int $prixHoraire = null;
+
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getPrixHoraire(): ?int
+    {
+        return $this->prixHoraire;
+    }
+
+    public function setPrixHoraire(int $prixHoraire): self
+    {
+        $this->prixHoraire = $prixHoraire;
+
+        return $this;
     }
 }

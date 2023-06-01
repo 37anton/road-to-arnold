@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Je m'inscris
+{% endblock %}
+
+{% block body %}
+	<div class="container-xl">
+		<h1>Inscription Coach</h1>
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<button class="btn">S'inscrire</button>
+		{{ form_end(form) }}
+
+	</div>
+{% endblock %}
