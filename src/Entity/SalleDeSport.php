@@ -34,6 +34,10 @@ class SalleDeSport
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+
+    #[ORM\Column(length: 255)]
+    private ?string $adresse = null;
+
     #[ORM\OneToMany(mappedBy: 'salle', targetEntity: RendezVous::class)]
     private Collection $rendezVouses;
 
@@ -41,6 +45,7 @@ class SalleDeSport
     {
         $this->rendezVouses = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -119,6 +124,16 @@ class SalleDeSport
         return $this;
     }
 
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+    }
     /**
      * @return Collection<int, RendezVous>
      */
@@ -145,6 +160,7 @@ class SalleDeSport
                 $rendezVouse->setSalle(null);
             }
         }
+
 
         return $this;
     }

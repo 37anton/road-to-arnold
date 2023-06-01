@@ -32,7 +32,8 @@ class SalleDeSportCrudController extends AbstractCrudController
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads/')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
-                ->setRequired(false)
+                ->setRequired(false),
+            TextField::new('adresse')
         ];
     }
     

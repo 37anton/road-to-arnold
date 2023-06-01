@@ -3,10 +3,27 @@
     {% block title %} {{ salledesport.libelle}} {% endblock %}
 
     {% block body %}
-        <h1>{{ salledesport.libelle}}</h1>
+        
+<style>
+    body{
+        padding-left:150px;
+    }
+</style>
 
-
-        {{dump(salledesport)}}
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/uploads/{{ salledesport.illustration }}" alt="{{salledesport.libelle}}" class="img-fluid">
+            </div>
+            <div class="col-md-7">
+                <h3>{{ salledesport.libelle}}</h3>
+                <p>{{salledesport.adresse}}</p>
+                <hr>
+                <p> 
+                    {{salledesport.description}}
+                </p>
+                <a href="https://maps.google.com/maps?q={{salledesport.enseigne}}+{{salledesport.adresse}}" class="btn btn-primary">Itinéraire</a>
+            </div>
+        </div>
 
 
     {% endblock %}

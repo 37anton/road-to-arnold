@@ -5,14 +5,19 @@
 
 {% block body %}
 	<div class="container-xl">
-		<h1>Êtes-vous un coach ?</h1>
-		<a href="{{ path('registration-coach') }}">Je m'inscris</a>
+		{% if app.user %}
+			<h1>Vous êtes connecter en tant que <b>{{app.user.nom}}</b></h1>
+		{% else %}
+			<h1>Êtes-vous un coach ?</h1>
+				<a href="{{ path('registration-coach') }}">Je m'inscris</a>
 
-		<h1>Êtes-vous débutant ?</h1>
-		<a href="{{ path('registration-debutant') }}">Je m'inscris</a>
+			<h1>Êtes-vous débutant ?</h1>
+				<a href="{{ path('registration-debutant') }}">Je m'inscris</a>
 
-		<h1>Vous avez déjà un compte ?</h1>
-		<a href="{{ path('app_login') }}">Je me connecte</a>
+			<h1>Vous avez déjà un compte ?</h1>
+				<a href="{{ path('app_login') }}">Je me connecte</a>
+		{% endif %}
+		
 
 	</div>
 
