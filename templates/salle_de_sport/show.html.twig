@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %} {{ salledesport.libelle}} {% endblock %}
+
+    {% block body %}
+        <h1>{{ salledesport.libelle}}</h1>
+
+
+        {{dump(salledesport)}}
+
+
+    {% endblock %}
