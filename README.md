@@ -34,10 +34,7 @@ VERSION :
    composer install
 
 4. Configurez le fichier .env avec vos paramètres spécifiques (nom et mot de passe de votre bdd).
-   importer le fichier SQL présent dans le dépôt GitHub avec comme nom de base "roadtoarnold"
-   puis faite cette commande
-   ```bash
-   symfony console d:m:m
+   Importer le fichier SQL présent dans le dépôt GitHub avec comme nom de base "roadtoarnold"
    
 5. Lancez le serveur de développement :
    ```bash
