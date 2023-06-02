@@ -14,6 +14,11 @@ Ce dépôt contient le code source du site web développé pour mettre en relati
 
 ## Configuration et Installation
 
+VERSION :
+   Php : >=8.1
+   Symfony : v4.28.1
+   Composer : v2.1.9
+
 1. Clonez le dépôt GitHub :
 
    ```bash
