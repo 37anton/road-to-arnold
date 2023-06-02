@@ -1,20 +1,16 @@
-# Titre du Projet
-
-Site Web de [Nom du Projet]
+# RoadToArnold
 
 ## Description
 
 [Description du Projet]
 
-Ce dépôt contient le code source du site web développé pour [décrire le contexte du projet et son objectif].
+Ce dépôt contient le code source du site web développé pour mettre en relation des débutants en musculation avec des coachs.
 
 ## Fonctionnalités
 
-- [Listez les principales fonctionnalités de votre site web]
-
-## Technologies Utilisées
-
-- [Listez les principales technologies et frameworks utilisés]
+- Prise de RDV
+- Acceptation du RDV
+- Liste des salles de sports
 
 ## Configuration et Installation
 
