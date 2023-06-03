@@ -13,6 +13,7 @@
 
 		<form method="post">
 
+<<<<<<< HEAD
 			{{form_start(formView)}}
 			{{form_label(formView.email)}}
 			{{form_widget(formView.email)}}
@@ -24,3 +25,20 @@
 	</div>
 </form>
 {% endblock %}
+=======
+			{{ form_start(formView, {'attr': {'class': 'form'}}) }}
+			<div class="form-group">
+				{{ form_label(formView.email, 'Email', {'label_attr': {'class': 'control-label'}}) }}
+				{{ form_widget(formView.email, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(formView.password, 'Password', {'label_attr': {'class': 'control-label'}}) }}
+				{{ form_widget(formView.password, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<button type="submit" class="btn btn-primary">Se connecter</button>
+			{{ form_end(formView) }}
+
+		</div>
+	</form>
+{% endblock %}
+>>>>>>> anton
