@@ -6,7 +6,9 @@ Ce dépôt contient le code source du site web développé pour mettre en relati
 
 ## Fonctionnalités
 
-- Prise de RDV
+- S'inscrire en tant que coach ou débutant sur la plateforme
+- Se connecter
+- Faire une demande de RDV avec un coach
 - Acceptation du RDV
 - Liste des salles de sports
 - Consultation des demandes de RDV et de leurs status
