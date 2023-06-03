@@ -59,6 +59,11 @@
 							<a href="{{ path('app_login') }}">Connexion</a>
 						{% endif %}
 					</div>
+					<div class="navbar-item-custom">
+						{% if app.user and isDebutant(app.user) %}
+							<a class="nav-link" href="{{ path('app_rendez_vous') }}">Demande de RDV avec un coach</a>
+						{% endif %}
+					</div>
 				</div>
 			</nav>
 		</header>

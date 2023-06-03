@@ -5,14 +5,26 @@
 
 {% block body %}
 	<div class="container-xl">
-		<h1>Êtes-vous un coach ?</h1>
-		<a href="{{ path('registration-coach') }}">Je m'inscris</a>
+		<h1>Marre d'avoir un corps de lâche ? Vous êtes au bon endroit !</h1>
+		<h1>Bienvenue chez Road to Arnold</h1>
 
-		<h1>Êtes-vous débutant ?</h1>
-		<a href="{{ path('registration-debutant') }}">Je m'inscris</a>
-
-		<h1>Vous avez déjà un compte ?</h1>
-		<a href="{{ path('app_login') }}">Je me connecte</a>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<h1>Êtes-vous un coach ?</h1>
+				<a href="{{ path('registration-coach') }}" class="btn btn-primary">Je m'inscris</a>
+			</div>
+			<div class="col-md-6">
+				<h1>Êtes-vous débutant ?</h1>
+				<a href="{{ path('registration-debutant') }}" class="btn btn-primary">Je m'inscris</a>
+			</div>
+		</div>
+		<div class="row mt-4">
+			<div class="col-md-12">
+				<h1>Vous avez déjà un compte ?</h1>
+				<a href="{{ path('app_login') }}" class="btn btn-primary">Je me connecte</a>
+			</div>
+		</div>
 
 	</div>
 
