@@ -2,15 +2,14 @@
 
 ## Description
 
-[Description du Projet]
-
-Ce dépôt contient le code source du site web développé pour mettre en relation des débutants en musculation avec des coachs.
+Ce dépôt contient le code source du site web développé pour mettre en relation des débutants en musculation avec des coachs. Les coachs et les débutants peuvent s'inscrire (2 formulaires différents). Les coachs rentrent leurs tarifs horaires. Les débutants leurs objectifs. Les débutants peuvent demander un RDV avec un coach pour s'entrainer. Et les coachs sont libres d'accepter ou non le RDV. 
 
 ## Fonctionnalités
 
 - Prise de RDV
 - Acceptation du RDV
 - Liste des salles de sports
+- Consultation des demandes de RDV et de leurs status
 
 ## Configuration et Installation
 
