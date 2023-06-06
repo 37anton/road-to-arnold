@@ -133,7 +133,10 @@ class SalleDeSport
     public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
+
+        return $this;
     }
+
     /**
      * @return Collection<int, RendezVous>
      */
