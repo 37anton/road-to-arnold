@@ -38,7 +38,7 @@ VERSION :
    composer install
 
 4. Configurez le fichier .env avec vos paramètres spécifiques (nom et mot de passe de votre bdd).
-   Importer le fichier SQL présent dans le dépôt GitHub avec comme nom de base "roadtoarnold"
+   Crée une bdd 'roadtoarnold' et importer le fichier sql présent dans le dépôt pour avoir les comptes coach, débutant, admin et les autres données du site
    
 5. Lancez le serveur de développement :
    ```bash
@@ -47,6 +47,12 @@ VERSION :
 6. Accédez à l'application dans votre navigateur à l'adresse suivante :
    ```bash
    127.0.0.0:8000
+
+## Comptes
+
+- Coach : coach@coach : coach
+- Débutant : debutant@debutant : debutant
+- Administrateur : admin@rta.com : 123456
 
 ## Auteurs
 
